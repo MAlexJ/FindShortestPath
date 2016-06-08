@@ -1,5 +1,6 @@
 package com.alex.service.impl;
 
+import com.alex.exception.FileDataNotFoundException;
 import com.alex.service.LoadFileService;
 
 import java.io.*;
@@ -15,7 +16,12 @@ public class LoadFileServiceImpl implements LoadFileService {
         StringBuilder result = new StringBuilder();
 
         ClassLoader classLoader = getClass().getClassLoader();
-        File file = new File(classLoader.getResource(pathFile).getFile());
+        File file;
+        try {
+            file = new File(classLoader.getResource(pathFile).getFile());
+        } catch (NullPointerException e) {
+            throw new FileDataNotFoundException("File not found: " + pathFile);
+        }
 
         try (Scanner scanner = new Scanner(file)) {
 
@@ -24,7 +30,7 @@ public class LoadFileServiceImpl implements LoadFileService {
                 result.append(line + " ");
             }
         } catch (IOException e) {
-            e.printStackTrace(); //TODO EXCEPTION
+            e.printStackTrace();
         }
         return result.toString();
     }

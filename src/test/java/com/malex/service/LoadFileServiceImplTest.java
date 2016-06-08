@@ -5,6 +5,10 @@ import com.alex.service.LoadFileService;
 import com.alex.service.impl.LoadFileServiceImpl;
 import org.junit.Test;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.Scanner;
+
 import static junit.framework.TestCase.assertEquals;
 
 /**
@@ -17,7 +21,7 @@ public class LoadFileServiceImplTest {
     @Test
     public  void loadFile_test(){
         //given
-        String expectStr = "1 4 gdansk 2 2 1 3 3 bydgoszcz 3 1 1 3 1 4 4 torun 3 1 3 2 1 4 1 warszawa 2 2 4 3 1 2 ";
+        String expectStr = getList("data.txt");
         service = new LoadFileServiceImpl();
 
         //when
@@ -25,6 +29,21 @@ public class LoadFileServiceImplTest {
 
         //then
         assertEquals(expectStr,actualStr);
+        System.out.println(actualStr);
 
+    }
+
+    private String getList(String data){
+        StringBuilder result = new StringBuilder();
+        File file = new File(getClass().getClassLoader().getResource(data).getFile());
+        try (Scanner scanner = new Scanner(file)) {
+            while (scanner.hasNextLine()) {
+                String line = scanner.nextLine();
+                result.append(line + " ");
+            }
+        } catch (IOException e) {
+            //NON
+        }
+        return result.toString();
     }
 }
