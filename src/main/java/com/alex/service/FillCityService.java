@@ -9,5 +9,5 @@ import com.alex.entity.MapCityEntity;
 public interface FillCityService {
     CityEntity fillCity(String str);
 
-    String fillMapCity(String str, MapCityEntity mapCityEntity);
+    void fillMapCity(String str, MapCityEntity mapCityEntity);
 }

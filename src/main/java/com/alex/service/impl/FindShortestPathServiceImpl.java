@@ -56,7 +56,11 @@ public class FindShortestPathServiceImpl implements FindShortestPathService {
             minCost.add(resultCost);
         }
         Collections.sort(minCost);
-        return minCost.get(0);
+        Integer minSumCost = minCost.get(0);
+        if(minSumCost<200000){
+            //TODO is at most 200000
+        }
+        return minSumCost;
     }
 
     @Override
