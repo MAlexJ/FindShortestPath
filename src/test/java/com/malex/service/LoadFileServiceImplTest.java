@@ -29,8 +29,6 @@ public class LoadFileServiceImplTest {
 
         //then
         assertEquals(expectStr,actualStr);
-        System.out.println(actualStr);
-
     }
 
     private String getList(String data){

@@ -1,5 +1,6 @@
 package com.alex.service.impl;
 
+import com.alex.exception.AppException;
 import com.alex.exception.FileDataNotFoundException;
 import com.alex.service.LoadFileService;
 
@@ -32,7 +33,12 @@ public class LoadFileServiceImpl implements LoadFileService {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return result.toString();
+
+        String resultString = result.toString();
+        if( resultString.equals("")){
+            throw new AppException("File is empty");
+        }
+        return resultString;
     }
 
 }

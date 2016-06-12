@@ -2,9 +2,9 @@
 2
 gdansk
 1
-2 1
+2 230000
 bydgoszcz
 1
 1 1
 gdansk bydgoszcz
-bydgoszcz warawW9a
+bydgoszcz warszawa

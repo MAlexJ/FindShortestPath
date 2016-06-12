@@ -2,6 +2,7 @@ package com.alex.service.impl;
 
 import com.alex.entity.vo.CityVO;
 import com.alex.entity.vo.ListCityVO;
+import com.alex.exception.InCorrectCostException;
 import com.alex.service.FindShortestPathService;
 
 import java.util.*;
@@ -22,7 +23,6 @@ public class FindShortestPathServiceImpl implements FindShortestPathService {
 
     @Override
     public int findMinCost() {
-
         if (resultListCity.isEmpty()) {
             //TODO MyException
             throw new IllegalArgumentException(" resultListCity is empty");
@@ -31,10 +31,6 @@ public class FindShortestPathServiceImpl implements FindShortestPathService {
             //TODO MyException
             throw new IllegalArgumentException(" listCity is empty");
         }
-
-        System.out.println(resultListCity);
-        System.out.println();
-
         List<Integer> minCost = new ArrayList<>();
         for (Set<String> strings : resultListCity) {
             CityVO tempCity = null;
@@ -57,8 +53,8 @@ public class FindShortestPathServiceImpl implements FindShortestPathService {
         }
         Collections.sort(minCost);
         Integer minSumCost = minCost.get(0);
-        if(minSumCost<200000){
-            //TODO is at most 200000
+        if(minSumCost>200000){
+            throw new InCorrectCostException("Превышен лимит стоимости поездки");//TODO is at most 200000
         }
         return minSumCost;
     }

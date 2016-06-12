@@ -3,7 +3,7 @@ package com.alex.exception;
 /**
  * Created by malex on 07.06.16.
  */
-public class InCorrectNameCityException extends InCorrectCityException {
+public class InCorrectNameCityException extends AppException {
 
     public InCorrectNameCityException() {
     }

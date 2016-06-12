@@ -69,7 +69,6 @@ public class FindShortestPathServiceTest {
                 this.listCity.getExceptionListNameCity(),
                 this.listCity.getCountCity());
         List<Set<String>> resultListCity = findShortestPathService.getResultListCity();
-        System.out.println(resultListCity);
 
         //then
         // number of variants (A-D ):4 ->  [A, B, C, D], [A, B, D], [A, C, B, D], [A, C, D]
@@ -129,7 +128,6 @@ public class FindShortestPathServiceTest {
 
         //then
         assertEquals(4, minCost);
-
     }
 
 }

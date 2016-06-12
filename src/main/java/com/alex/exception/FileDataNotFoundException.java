@@ -3,7 +3,7 @@ package com.alex.exception;
 /**
  * Created by malex on 09.06.16.
  */
-public class FileDataNotFoundException extends InCorrectCityException {
+public class FileDataNotFoundException extends AppException {
     public FileDataNotFoundException() {
     }
 
