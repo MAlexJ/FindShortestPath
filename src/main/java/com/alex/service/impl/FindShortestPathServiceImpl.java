@@ -54,10 +54,10 @@ public class FindShortestPathServiceImpl implements FindShortestPathService {
     public int findMinCost() {
         resultListCity = validate(resultListCity, listCity);
         if (resultListCity.isEmpty()) {
-            throw new ListCityIsEmptyException("ResultListCity is empty");
+            throw new ListCityIsEmptyException("ResultListCity is empty!");
         }
         if (listCity.getListCity().isEmpty()) {
-            throw new ListCityIsEmptyException(" listCity is empty");
+            throw new ListCityIsEmptyException("ListCity is empty!");
         }
         List<Integer> minCost = new ArrayList<>();
         for (Set<String> strings : resultListCity) {
@@ -82,7 +82,7 @@ public class FindShortestPathServiceImpl implements FindShortestPathService {
         Collections.sort(minCost);
         Integer minSumCost = minCost.get(0);
         if (minSumCost > 200000) {
-            throw new IncorrectCostException("Limit is exceeded cost of the trip.");
+            throw new IncorrectCostException("Limit is exceeded cost of the trip!");
         }
         return minSumCost;
     }

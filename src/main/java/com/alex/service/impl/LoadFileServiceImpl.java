@@ -36,7 +36,7 @@ public class LoadFileServiceImpl implements LoadFileService {
 
         String resultString = result.toString();
         if( resultString.equals("")){
-            throw new AppException("File is empty");
+            throw new AppException("File is empty!");
         }
         return resultString;
     }
