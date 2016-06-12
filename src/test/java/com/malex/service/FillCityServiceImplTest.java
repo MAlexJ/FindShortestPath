@@ -2,8 +2,8 @@ package com.malex.service;
 
 import com.alex.entity.CityEntity;
 import com.alex.exception.AppException;
-import com.alex.exception.InCorrectNameCityException;
-import com.alex.exception.InCorrectNumberCityException;
+import com.alex.exception.IncorrectNameCityException;
+import com.alex.exception.IncorrectNumberCityException;
 import com.alex.service.FillCityService;
 import com.alex.service.impl.FillCityServiceImpl;
 import org.junit.Test;
@@ -59,7 +59,7 @@ public class FillCityServiceImplTest {
         assertEquals(map,cityEntity.getIndexOfCityTransportationCost());
     }
 
-    @Test(expected = InCorrectNameCityException.class)
+    @Test(expected = IncorrectNameCityException.class)
     public void fillCity_test_03(){
         //given
         String str = "pragRa56 2 1 2 2 4 2";
@@ -72,7 +72,7 @@ public class FillCityServiceImplTest {
         assertNotNull(cityEntity);
     }
 
-    @Test(expected = InCorrectNumberCityException.class)
+    @Test(expected = IncorrectNumberCityException.class)
     public void fillCity_test_04(){
         //given
         String str = "pragfg 2fg 1 2 2 4 2";

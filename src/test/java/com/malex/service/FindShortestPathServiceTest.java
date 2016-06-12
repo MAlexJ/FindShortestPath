@@ -30,20 +30,20 @@ public class FindShortestPathServiceTest {
 
         CityVO A = new CityVO();
         A.setName("A");
-        A.addToMap(new CityVO("B"), 2);
-        A.addToMap(new CityVO("C"), 5);
+        A.addToMap(new CityVO("B"), 1);
+        A.addToMap(new CityVO("C"), 3);
         listCity.addToListCity(A);
 
         CityVO B = new CityVO();
         B.setName("B");
-        B.addToMap(new CityVO("A"), 2);
+        B.addToMap(new CityVO("A"), 1);
         B.addToMap(new CityVO("C"), 1);
         B.addToMap(new CityVO("D"), 4);
         listCity.addToListCity(B);
 
         CityVO C = new CityVO();
         C.setName("C");
-        C.addToMap(new CityVO("A"), 5);
+        C.addToMap(new CityVO("A"), 3);
         C.addToMap(new CityVO("B"), 1);
         C.addToMap(new CityVO("D"), 1);
         listCity.addToListCity(C);
@@ -104,11 +104,10 @@ public class FindShortestPathServiceTest {
                 this.listCity.getExceptionListNameCity(),
                 this.listCity.getCountCity());
 
-
         int minCost = findShortestPathService.findMinCost();
 
         //then
-        assertEquals(2, minCost);
+        assertEquals(1, minCost);
     }
 
     @Test
@@ -127,7 +126,7 @@ public class FindShortestPathServiceTest {
         int minCost = findShortestPathService.findMinCost();
 
         //then
-        assertEquals(4, minCost);
+        assertEquals(3, minCost);
     }
 
 }

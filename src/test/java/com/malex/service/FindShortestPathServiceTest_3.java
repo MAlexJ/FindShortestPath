@@ -2,14 +2,11 @@ package com.malex.service;
 
 import com.alex.entity.vo.CityVO;
 import com.alex.entity.vo.ListCityVO;
-import com.alex.exception.InCorrectCostException;
+import com.alex.exception.IncorrectCostException;
 import com.alex.service.FindShortestPathService;
 import com.alex.service.impl.FindShortestPathServiceImpl;
 import org.junit.Before;
 import org.junit.Test;
-
-import java.util.List;
-import java.util.Set;
 
 /**
  * Created by malex on 12.06.2016.
@@ -54,8 +51,8 @@ public class FindShortestPathServiceTest_3 {
         listCity.addToListCity(D);
     }
 
-    // 120000 + 1 + 110000 > 200000 : InCorrectCostException
-    @Test(expected = InCorrectCostException.class)
+    // 120000 + 1 + 110000 > 200000 : IncorrectCostException
+    @Test(expected = IncorrectCostException.class)
     public void findPath_test_01() {
         //given
         findShortestPathService = new FindShortestPathServiceImpl();
@@ -66,10 +63,10 @@ public class FindShortestPathServiceTest_3 {
                 this.listCity.getListCity(),
                 this.listCity.getExceptionListNameCity(),
                 this.listCity.getCountCity());
-        List<Set<String>> resultListCity = findShortestPathService.getResultListCity();
+        findShortestPathService.getResultListCity();
 
         //then
-        int minPrice = findShortestPathService.findMinCost();
+        findShortestPathService.findMinCost();
     }
 
 }
