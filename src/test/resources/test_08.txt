@@ -1,0 +1,10 @@
+1
+2
+gdansk
+1
+2 1
+bydgoszcz
+1
+1 1
+gdansk bydgoszcz
+bydgoszcz warszawa
