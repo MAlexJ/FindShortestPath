@@ -2,14 +2,17 @@ package com.alex.init;
 
 
 import com.alex.controller.MainController;
+import com.alex.exception.AppException;
 
-/**
- * Created by malex on 07.06.16.
- */
 public class Main {
 
     public static void main(String[] args) {
         MainController controller = new MainController();
-        controller.init();
+        try {
+            controller.init();
+        }catch (AppException e){
+            System.out.println(e.getMessage());
+        }
+
     }
 }

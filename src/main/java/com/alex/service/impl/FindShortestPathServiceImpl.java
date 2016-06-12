@@ -18,16 +18,41 @@ public class FindShortestPathServiceImpl implements FindShortestPathService {
 
     @Override
     public List<Set<String>> getResultListCity() {
-        //TODO validate List!!!!!! C- D or B -D-> [[C, A, B, D], *** [C, A, D] *** not link**, [C, B, D], [C, B, D], [C, D]]
+        return validate(resultListCity, listCity);
+    }
+
+    private List<Set<String>> validate(List<Set<String>> valListCity, ListCityVO valCity) {
+        List<Set<String>> removeList = new ArrayList<>();
+        List<CityVO> listCity = valCity.getListCity();
+        for (Set<String> itemSt : valListCity) {
+
+            String tempCityNAme = "";
+            for (String cityName : itemSt) {
+                if (!tempCityNAme.isEmpty()) {
+                    for (CityVO cityVO : listCity) {
+                        if (cityVO.getName().equals(cityName)) {
+                            Map<CityVO, Integer> cost = cityVO.getCost();
+                            if (!cost.keySet().contains(new CityVO(tempCityNAme))) {
+                                removeList.add(itemSt);
+                            }
+                        }
+                    }
+                }
+                tempCityNAme = cityName;
+            }
+        }
+        resultListCity.removeAll(removeList);
         return resultListCity;
     }
 
+    @Override
     public void reset() {
         resultListCity = new ArrayList<>();
     }
 
     @Override
     public int findMinCost() {
+        resultListCity = validate(resultListCity, listCity);
         if (resultListCity.isEmpty()) {
             throw new ListCityIsEmptyException("ResultListCity is empty");
         }

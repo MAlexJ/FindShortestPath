@@ -103,11 +103,10 @@ public class FindShortestPathServiceTest {
                 this.listCity.getListCity(),
                 this.listCity.getExceptionListNameCity(),
                 this.listCity.getCountCity());
-
         int minCost = findShortestPathService.findMinCost();
 
         //then
-        assertEquals(1, minCost);
+        assertEquals(2, minCost);
     }
 
     @Test
